@@ -18,7 +18,7 @@ class InstagramService
     // Buscar postagens do Instagram
     public function getPosts()
     {
-        $response = $this->client->get('https://graph.facebook.com/v21.0//media', [
+        $response = $this->client->get('https://graph.facebook.com/v21.0/{id-conta-instagram}/media', [
             'query' => [
                 'fields' => 'id,comments_count,caption,media_type,media_url,thumbnail_url,permalink',
                 'access_token' => $this->accessToken,
