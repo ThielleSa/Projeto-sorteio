@@ -1,0 +1,25 @@
+# Laravel
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/storage/logs
+/.idea
+/.vscode
+*.log
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# Composer
+composer.lock
+
+# NPM
+package-lock.json
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
