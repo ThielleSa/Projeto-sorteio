@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #d7d6d6;
         }
 
         .container {
@@ -37,7 +37,6 @@
 
         .card img {
             width: 100%;
-
             object-fit: cover;
         }
 
@@ -69,17 +68,40 @@
         .card-content a:hover {
             text-decoration: underline;
         }
-        h1{
-            margin-left: 90px;
+
+        /* Estilo para o título e a logo */
+        .title-container {
+            display: flex;
+            align-items: center;  /* Alinha a imagem e o título verticalmente */
+            padding: 30px; /* Aumenta o espaçamento ao redor da logo e título */
+            margin: 0 20px; /* Aumenta a margem lateral para afastar mais da borda */
+        }
+
+        .title-container img {
+            height: 50px;  /* Ajusta a altura da imagem */
+            margin-right: 10px;  /* Espaço entre a imagem e o título */
+        }
+
+        h1 {
+            margin: 0;  /* Remove margens desnecessárias */
         }
     </style>
 </head>
 <body>
-<h1>Postagens do instagram</h1>
+
+<!-- Título e logo lado a lado -->
+<div class="title-container">
+    <img src="images/instagram1.png" alt="Instagram logo">
+    <h1>Postagens do Instagram</h1>
+</div>
+
+<!-- Container com os cards das postagens -->
 <div class="container">
     @foreach($posts as $post)
         <div class="card">
-            <a href="{{ url('/posts/' . $post['id']) }}"><img src="{{ $post['media_url'] }}" alt="Imagem do Post"></a>
+            <a href="{{ url('/posts/' . $post['id']) }}">
+                <img src="{{ $post['media_url'] }}" alt="Imagem do Post">
+            </a>
             <div class="card-content">
                 <!-- <p><strong>ID:</strong> {{ $post['id'] }}</p> -->
                 <p><strong>Total Comentários:</strong> {{ $post['comments_count'] }}</p>
