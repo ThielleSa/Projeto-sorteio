@@ -1,81 +1,71 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sorteador</title>
+    <!-- Link do Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 
+
+    <!-- Estilos personalizados (se necessário) -->
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        /* Container com a imagem de fundo */
-        .container {
-            display: flex; /* Usando flexbox para facilitar o alinhamento */
-            width: 100vw; /* Largura total da janela de visualização */
-            height: 100vh; /* Altura total da janela de visualização */
-            background-image: url('images/fundo3.webp'); /* Caminho correto para a imagem */
-            background-color: #f0f0f0; /* Cor de fundo caso a imagem não carregue */
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f9;
+            background-image: url('images/fundo5.jpg'); /* Caminho correto para a imagem */
             background-size: cover; /* A imagem cobre toda a área */
             background-position: center; /* A imagem é centralizada */
             background-repeat: no-repeat; /* A imagem não se repete */
             background-attachment: fixed; /* A imagem ficará fixa enquanto a página rola */
-            justify-content: center; /* Centraliza a div-login horizontalmente */
-            align-items: center; /* Centraliza a div-login verticalmente */
         }
-
-        /* Estilo do formulário de login */
-        .div-login {
-            height: 450px;
-            width: 25%; /* Largura fixa */
-            background-color: rgba(187, 191, 194, 0.65); /* Cor de fundo com opacidade */
-            border: 3px solid #013101; /* Cor da borda */
-            border-radius: 10px; /* Bordas arredondadas */
-            padding: 30px; /* Espaçamento interno */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Centraliza os itens dentro do formulário */
-            text-align: center; /* Alinha o texto ao centro */
-            font-size: 15pt;
-        }
-
-        /* Estilo dos inputs e botão */
-        .form-control-lg {
-            margin-bottom: 5px; /* Espaço entre os campos */
-        }
-
-        .image-logo{
-            width: 20%; /* A imagem ocupará metade da largura */
-            background-image: url('images/logo-irdeb.png'); /* Substitua pelo caminho da sua imagem */
-            background-size: cover;
-            background-position: center;
-        }
-        button {
-            width: 100%; /* O botão ocupa toda a largura da div-login */
-            padding: 10px; /* Padding para o botão */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            border: 2px solid black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="image-logo"></div>
-    <div class="div-login">
-        <form>
-            <h1>👤Login</h1><br>
-            <label for="usuario">Usuário:</label><br>
-            <input class="form-control form-control-lg" type="text" id="usuario"><br>
-            <label for="senha">Senha:</label><br>
-            <input class="form-control form-control-lg" type="password" id="senha"><br>
-            <button type="submit" class="btn btn-primary">Entrar</button>
-        </form>
+<div class="login-container">
+    <!--<h3 class="text-center mb-4">Login</h>-->
+    <!-- Logo acima do formulário -->
+    <div class="text-center mb-4">
+        <img src="images/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
     </div>
+    <form>
+        <div class="mb-3">
+            <label for="username" class="form-label">Nome de usuário</label>
+            <input type="text" class="form-control" id="username" placeholder="Digite seu nome de usuário" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                <input type="checkbox" id="rememberMe"> <label for="rememberMe">Lembrar de mim</label>
+            </div>
+            <div>
+                <a href="#">Esqueceu a senha?</a>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-3">Entrar</button>
+    </form>
 </div>
+
+<!-- Scripts do Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>
