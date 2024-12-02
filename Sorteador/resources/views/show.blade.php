@@ -11,7 +11,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #d7d6d6;
         }
 
         h2 {
@@ -19,19 +19,72 @@
             margin-top: 20px;
         }
 
-        /* Centralizar o conteúdo */
+        /* Container para card e div de comentários lado a lado */
         .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row; /* Layout em linha */
+            align-items: flex-start; /* Alinha os itens no topo */
+            justify-content: center;
             margin-top: 10px;
+        }
+
+        /* Estilo do card */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: 50px; /* Distância do card para a div de comentários */
+            width: 250px;
+            height: 300px; /* Altura fixa */
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px; /* Ajusta a altura da imagem dentro do card */
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+            height: calc(100% - 150px); /* Faz o conteúdo do card ocupar o restante da altura */
+            overflow-y: auto;
+        }
+
+        .card-content p {
+            margin: 8px 0;
+            color: #555;
+        }
+
+        .card-content .caption {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;  /* Limita a 3 linhas */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #333;
+        }
+
+        .card-content a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .card-content a:hover {
+            text-decoration: underline;
         }
 
         /* Estilo da div que contém os comentários */
         #comments {
-            width: 80%;
+            width: 100%;
             max-width: 800px;
-            height: 300px;
+            height: 300px; /* Altura igual ao card */
             overflow-y: scroll; /* Permite rolar para baixo */
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -79,63 +132,15 @@
         #raffled-comments p {
             margin: 5px 0;
         }
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-            margin-top: 5px;
-            margin-bottom: 15px;
-            width: 250px;
-            overflow: hidden;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card img {
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-content p {
-            margin: 8px 0;
-            color: #555;
-        }
-
-        /* Limitar a legenda (caption) a 3 linhas com elipse */
-        .card-content .caption {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;  /* Limita a 3 linhas */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            color: #333;
-        }
-
-        .card-content a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        .card-content a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 
 <h2>Comentários</h2>
 
-<!-- Container para os comentários e sorteados -->
+<!-- Container para o card e comentários -->
 <div class="container">
+    <!-- Card do Post -->
     <div class="card">
         <img src="{{ $post['media_url'] }}" alt="Imagem do Post">
         <div class="card-content">
@@ -146,23 +151,24 @@
             <a href="{{ url('/posts/' . $post['id']) }}">Ver Comentários</a>
         </div>
     </div>
+
     <!-- Div que contém todos os comentários -->
     <div id="comments">
+        <h3>Comentários</h3>
         <?php $x = 0; ?>
         @foreach ($comments as $comment)
             <div class="comment" data-username="{{ $comment['username'] }}">
                 <strong>{{ $comment['username'] }}:</strong> {{ $comment['text'] }}
             </div>
-            <?php $x++; ?>
+                <?php $x++; ?>
         @endforeach
         <p>{{$x}}</p>
     </div>
+</div>
 
-    <!-- Botão para sortear comentários -->
+<!-- Botão para sortear comentários centralizado -->
+<div style="display: flex; justify-content: center; margin-top: 20px;">
     <button id="raffle-btn">Sortear Comentários</button>
-
-    <!-- Div que irá exibir os comentários sorteados -->
-    <!-- <div id="raffled-comments" style="text-align: center"></div> -->
 </div>
 
 <script>
