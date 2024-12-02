@@ -35,12 +35,11 @@
     </style>
 </head>
 <body>
-
 <div class="login-container">
-    <!--<h3 class="text-center mb-4">Login</h>-->
     <!-- Logo acima do formulário -->
     <div class="text-center mb-4">
         <img src="images/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+        <h3 style="color: #3854b2;"><i>Sorteador</i></h3>
     </div>
     <form>
         <div class="mb-3">
