@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InstagramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/posts');
+    return redirect('/login');
 });
 
-use App\Http\Controllers\InstagramController;
+Route::get('/login', function(){
+    return view('login');
+});
 
-Route::get('/posts', [InstagramController::class, 'index']);
+Route::post('/authenticating', [InstagramController::class, 'logar'])->name('logar');
+Route::get('/posts', [InstagramController::class, 'index'])->name('index');
 Route::get('/posts/{mediaId}', [InstagramController::class, 'show']);
 Route::post('/raffle', [InstagramController::class, 'raffleComments']);
+
+Route::post('/logout', [InstagramController::class, 'logout'])->name('logout');
+
+Route::get('/user-manager', [InstagramController::class, 'userManager'])->name('user-manager');
 
 
 
